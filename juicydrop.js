@@ -1823,6 +1823,7 @@ var JuicyDrop = function(screenCtr, width, height, audioInput) {
 			url, 
 			function(http) {
 				preset = parseMilk(http.responseText);
+				console.log('preset', preset)
 				isMilkDrop = true;
 				presetUrl = url;
 				if (callback)

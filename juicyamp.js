@@ -27,14 +27,14 @@ var $ = function(id) {return document.getElementById(id);};
 
 var visualizations = [
 	//"fiShbRaiN - narcolepsy",
-	"Unchained - God Of The Game (Remix)",
 	"Zylot - Spiral (Hypnotic)",
-	"Unchained - Cranked On Failure",
+	"Unchained - God of the Game",
+	// "Unchained - God Of The Game (Remix)",
+	// "Unchained - Cranked On Failure",
 	"Rovastar & Zylot - Narell's Fever",
 	"fiShbRaiN - betelguese",
 	"Rovastar - Starquake",
 	"fiShbRaiN - inside the flux capacitor",
-	"Unchained - God of the Game",
 	"Krash - Hyperspace",
 	"John Scoville - Inside Outside",
 	"John Scoville - Retina (Beat Mix)",
@@ -105,7 +105,7 @@ function initJuicyAmp() {
 	JuicyDrop.prepareSM2(soundManager);
 	
 	soundManager.flashLoadTimeout = 6000;
-	soundManager.waitForWindowLoad = false;
+	soundManager.waitForWindowLoad = true;
 	soundManager.debugMode = false;
 
 	SMLoaded = true;
@@ -203,16 +203,34 @@ function initJuicyAmp() {
 			smsongs[item._value].play();
 		} else {
 			// load song
-			var music = soundManager.createSound(
-				{
-					id:item._value,
-					url:"music/" + item._value,
-					autoLoad : true,
-					stream : true,
-					autoPlay : true
-				}
-			);
-			smsongs[item._value] = music;
+			// console.log(item._value)
+			if(item._value.indexOf('api.soundcloud.com') != -1)
+			{
+				// console.log('http', item)
+				var music = soundManager.createSound({
+	    				id: item._value,
+	    				url: item._value,
+	    				autoPlay: true,
+	    				useWaveformData: true,
+	    				stream: true,
+	    				autoLoad: true
+	    		 });
+				smsongs[item._value] = music;
+			}
+			else
+			{
+				var music = soundManager.createSound(
+					{
+						id:item._value,
+						url:"music/" + item._value,
+						autoLoad : true,
+						stream : true,
+						useWaveformData: true,
+						autoPlay : true
+					}
+				);
+				smsongs[item._value] = music;
+			}
 		}
 		activeMusic = smsongs[item._value];
 		// console.log('activemusic', activeMusic)
@@ -232,7 +250,8 @@ function initJuicyAmp() {
 	for (var i=0;i<songs.length;i++) {
 		(function() {
 			var file = songs[i][0];
-			var label = i+1 + ". " + songs[i][1];
+			// var label = i+1 + ". " + songs[i][1];
+			var label = songs[i][1];
 			var songItem = addListItem(
 				document.getElementById("playlist"),
 				label, file, selectSong
@@ -248,13 +267,13 @@ function initJuicyAmp() {
 		if (activeVisItem)
 			activeVisItem.className = "";
 		activeVisItem = item;
-		JD.loadMilkDrop("presets_old/" + item._value + '.milk');
+		JD.loadMilkDrop("presets_old/" + item._value);
 		item.className = "active";
 	}
 
 	for (var i=0;i<visualizations.length;i++) {
 		(function() {
-			var file = visualizations[i];
+			var file = visualizations[i] + '.milk';
 			var label = visualizations[i];
 			visItems.push(addListItem(
 				document.getElementById("vislist"),
@@ -269,6 +288,8 @@ function initJuicyAmp() {
 	var buttonPause = document.getElementById("button-pause")
 	var buttonStop = document.getElementById("button-stop")
 	var buttonNext = document.getElementById("button-next")
+	var soundCloudPlay = document.getElementById("soundcloud")
+	var soundCloudUsername = document.getElementById("username")
 
 	var buttons = [buttonPrev, buttonPlay, buttonPause, buttonStop, buttonNext];
 	for (var i=0;i<buttons.length;i++) {
@@ -314,6 +335,42 @@ function initJuicyAmp() {
 		}
 	}
 
+	soundCloudPlay.onclick = function(){
+		var username = soundCloudUsername.value || 'cggaurav';
+		var playlistURL = "http://soundcloud.com/" + username + "/favorites";
+		var playlistURLEscaped = unescape(playlistURL);
+		var client_id = '4d22ab0a4b9079ea036d11b09f29db00';
+		jQuery.ajax({
+			url: "http://api.soundcloud.com/resolve.json?url=" + playlistURLEscaped + 
+		            "&client_id=" + client_id,
+			type: 'GET',
+			dataType: 'jsonp',
+			jsonp: 'callback',
+			success: function(response){
+				// console.log(response);
+			    if ("tracks" in response)
+					songs = response.tracks;
+			    else if (0 in response)
+					songs = response;
+			    else
+					songs = [response];
+
+			    for (var i = 0; i < songs.length; i++) {
+					var song = songs[i];
+					var title = song.title;
+					var url = song.stream_url + ((song.stream_url.indexOf("?") == -1) ? "?" : "&") + "client_id=" + client_id;
+					var trackId = "track_" + song.id;
+					// var file = songs[i][0];
+					// var label = i+1 + ". " + songs[i][1];
+					addListItem(
+						document.getElementById("playlist"),
+						title, url, selectSong
+					);
+					// console.log(title)
+				}
+			}
+		});
+	}
 	var specCanvas = document.getElementById("spectrum");
 	var specCtx = specCanvas.getContext("2d");
 	var specBar = document.getElementById("spec-bar");
