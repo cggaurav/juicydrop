@@ -1,0 +1,93 @@
+<!DOCTYPE html5>
+<html>
+<head>
+
+<title>JuicyDrop - Winamp Music Visualization with JavaScript and Canvas</title>
+
+<link rel="stylesheet" type="text/css" href="reset.css">
+<link rel="stylesheet" type="text/css" href="jScrollPane.css">
+
+<!--<script type="text/javascript" src="soundmanager/script/soundmanager2.js"></script>-->
+<script type="text/javascript" src="jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="jquery.mousewheel.js"></script>
+<script type="text/javascript" src="jScrollPane.js"></script>
+
+<link rel="stylesheet" type="text/css" href="juicyamp.css">
+<script type="text/javascript" src="juicydrop.js"></script>
+<script type="text/javascript" src="juicyamp.js"></script>
+
+<script>
+function setupSoundManager() {
+	var script = document.createElement('script');
+	script.type = "text/javascript";
+	script.src = "soundmanager2.js";
+	script.onload = function() {
+		JuicyDrop.prepareSM2(soundManager);
+		soundManager.url = './'; // path to directory containing SoundManager2 .SWF file
+		soundManager.onload = function() {
+			initJuicyAmp();
+		};
+		soundManager.debugMode = false;
+		soundManager.beginDelayedInit();
+		this.onload = null;
+	};
+	document.getElementsByTagName("head")[0].appendChild(script);
+}
+
+window.onload = function() {
+	// delay, let the document load and so on, then write out SM2 "on-the-fly"
+	setTimeout(setupSoundManager,500);
+}
+</script>
+
+
+</head>
+<body>
+
+<div id="main">
+	<div id="juicyamp">
+	<div id="visualization">
+		<div id="screen"></div>
+		<div id="infotext"></div>
+	</div>
+	<div id="player">
+		<canvas id="spectrum"></canvas>
+		<span id="current-song"></span>
+		<ul id="buttons">
+			<li id="button-prev"></li>
+			<li id="button-play"></li>
+			<li id="button-pause"></li>
+			<li id="button-stop"></li>
+			<li id="button-next"></li>
+		</ul>
+	</div>
+	<div id="playlist-container">
+		<ul id="playlist"></ul>
+	</div>
+	<div id="vislist-container">
+		<div class="scroll-holder">
+			<div id="pane1" class="scroll-pane">
+				<div class="list-holder">
+					<ul id="vislist"></ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="footer">
+		A JavaScript/Canvas experiment by <a href="http://blog.nihilogic.dk/">Jacob Seidelin</a>, brought back up alive by <a href="http://github.com/cggaurav">cggaurav</a><br/><br/><br/>
+		<a href="http://blog.nihilogic.dk/2009/03/javascript-canvas-sm2-milkdrop.html">Click here to read words about JuicyDrop</a><br/><br/><br/>
+		Music by <a href="http://www.jonathancoulton.com/">Jonathan Coulton</a>, licensed <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC by-nc</a><br/>
+	</div>
+
+	</div>
+
+</div>
+<img src="chrome_vis_bar.png" id="spec-bar" style="display:none;"/>
+
+<!-- <script src="http://72182.hittail.com/mlt.js" type="text/javascript"></script> -->
+
+<div id="soundmanager-debug" style="display:none;"></div>
+
+</body>
+</html>

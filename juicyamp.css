@@ -1,0 +1,219 @@
+body {
+	background-color : #192629;
+}
+
+a {
+	color:#bbb;
+	font-family:arial;
+	font-size:11px;
+}
+
+
+#main {
+	position:relative;
+	margin : 20px auto;
+	width:694px;
+	height:1px;
+	text-align:center;
+}
+
+#juicyamp {
+	text-align:left;
+}
+
+#screen {
+	background-color : black;
+	height : 400px;
+	width : 400px;
+}
+
+#infotext {
+	position : absolute;
+	left : 15px;
+	top : 20px;
+	color : white;
+	font-family:arial;
+	font-size:10px;
+	z-index : 100;
+}
+
+#visualization {
+	position : absolute;
+	background : url('chrome_visualization_window.png');
+	width : 409px;
+	height : 413px;
+	padding-left : 11px;
+	padding-top : 20px;
+	overflow:hidden;
+}
+
+#player {
+	position : relative;
+	background : url('chrome_player_window.png');
+	width : 274px;
+	height : 77px;
+	left : 420px;
+}
+
+#buttons {
+	position : absolute;
+	left : 122px;
+	top : 45px;
+}
+
+#buttons li {
+	height : 18px;
+	width : 23px;
+	background : url('chrome_buttons.png') no-repeat;
+	overflow:hidden;
+	display:inline-block;
+}
+
+#button-prev {
+	background-position : 0px 0px;
+}
+#button-play {
+	background-position : -23px 0px !important;
+}
+#button-pause {
+	background-position : -46px 0px !important;
+}
+#button-stop {
+	background-position : -69px 0px !important;
+}
+#button-next {
+	background-position : -92px 0px !important;
+}
+#button-prev.mousedown {
+	background-position : 0px -18px;
+}
+#button-play.mousedown {
+	background-position : -23px -18px !important;
+}
+#button-pause.mousedown {
+	background-position : -46px -18px !important;
+}
+#button-stop.mousedown {
+	background-position : -69px -18px !important;
+}
+#button-next.mousedown {
+	background-position : -92px -18px !important;
+}
+
+#playlist-container {
+	position : relative;
+	background : url('chrome_playlist_window.png');
+	width : 274px;
+	height : 106px;
+	left : 420px;
+}
+
+#vislist-container {
+	position : relative;
+	background : url('chrome_visualization_list_window.png');
+	width : 274px;
+	height : 106px;
+	left : 420px;
+}
+
+#footer {
+	position : relative;
+	margin-top : 30px;
+
+	color:#bbb;
+	font-family:arial;
+	font-size:11px;
+	width : 274px;
+	left : 420px;
+	text-align : center;
+}
+
+
+#playlist {
+	color:#00E200;
+	display:inline;
+	font-family:arial;
+	font-size:10px;
+	left:12px;
+	letter-spacing:1px;
+	position:absolute;
+	top:23px;
+}
+
+#playlist li, #vislist li {
+	cursor : pointer;
+	width : 245px;
+	padding-left:5px;
+	height : 12px;
+	overflow:hidden;
+}
+
+#vislist li {
+	width : 230px;
+}
+
+#vislist {
+	color:#00E200;
+	display:inline;
+	font-family:arial;
+	font-size:10px;
+	left:12px;
+	letter-spacing:1px;
+	top:23px;
+	width : 250px;
+	overflow : visible;
+	height : 150px;
+}
+
+#playlist li.active, #vislist li.active {
+	background-color : #0000c6;
+}
+
+.scroll-pane {
+	width:250px;
+	height:70px;
+	overflow:auto;
+}
+
+.scroll-holder {
+	position:absolute;
+	left:12px;
+	top:23px;"
+}
+
+.list-holder {
+	width:200px;
+	height:420px;
+}
+
+.jScrollPaneDrag {
+	background: url('chrome_scroll_handle.png') no-repeat scroll;
+}
+.jScrollPaneDragBottom {
+	background: url('chrome_scroll_handle.png') 0 -10px no-repeat scroll;
+	height:8px;
+}
+
+
+.jScrollPaneTrack {
+	background-color: #292940;
+}
+
+#spectrum {
+	position:absolute;
+	left : 21px;	
+	top : 42px;
+}
+
+#current-song {
+	color:#00E200;
+	font-family:arial;
+	font-size:10px;
+	height:11px;
+	left:112px;
+	overflow-x:hidden;
+	overflow-y:hidden;
+	position:absolute;
+	top:24px;
+	width:150px;
+}
