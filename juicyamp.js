@@ -27,6 +27,8 @@ var $ = function(id) {return document.getElementById(id);};
 
 var visualizations = [
 	//"fiShbRaiN - narcolepsy",
+	"Unchained - God Of The Game (Remix)",
+	"Zylot - Spiral (Hypnotic)",
 	"Unchained - Cranked On Failure",
 	"Rovastar & Zylot - Narell's Fever",
 	"fiShbRaiN - betelguese",
@@ -42,7 +44,6 @@ var visualizations = [
 	"Geiss - Oldskool",
 	"Geiss - Eggs",
 	"Zylot - Psyonist (New Eyes Mix)",
-	"Unchained - God Of The Game (Remix)",
 	//"Unchained - Picture Of Poison",
 	"Unchained - Painful Plasma",
 	"Unchained - Jaundice",
@@ -54,7 +55,6 @@ var visualizations = [
 	"Unchained - Making a Science of It 4",
 	"Unchained - Goofy Beat Detection",
 	"Telek EMPR - Scanner - Trust me, I've got a Melways",
-	"Zylot - Spiral (Hypnotic)",
 	"Rovastar - Explosive Minds",
 	"Geiss - De La Moutard 1",
 	"Unchained - Ribald Ballad",
@@ -63,10 +63,12 @@ var visualizations = [
 	"Geiss - Corpus Callosum"
 ];
 var songs = [
+	["nowornever.mp3", "Johan Vilborg & Tritonal feat. Phoebe Ryan - Now or Never A Mai Tai "],
 	["firstofmay.mp3", "Jonathan Coulton - First of May"],
 	["mrfancypants.mp3", "Jonathan Coulton - Mr. Fancy Pants"],
 	["tomcruisecrazy.mp3", "Jonathan Coulton - Tom Cruise Crazy"],
 	["mandelbrotset.mp3", "Jonathan Coulton - Mandelbrot Set"]
+
 /*
 	["wanderingstar.mp3", "Portishead - Wandering Star"],
 	["mariamaria.mp3", "Santana - Maria Maria"],
@@ -213,7 +215,7 @@ function initJuicyAmp() {
 			smsongs[item._value] = music;
 		}
 		activeMusic = smsongs[item._value];
-		console.log('activemusic', activeMusic)
+		// console.log('activemusic', activeMusic)
 		JD.setAudioInput(activeMusic);
 
 		if (!JD.isRunning())
