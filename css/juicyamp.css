@@ -12,7 +12,13 @@ a {
 	margin: 20px;
 }
 .username{
-	width : 200px;
+	width: 400px;
+	border: 2px solid gray;
+	border-radius: 5px;
+	height: 29px;
+	text-align: center;
+	color: gray;
+	background: #32324f;
 }
 #main {
 	position:relative;
@@ -44,7 +50,7 @@ a {
 
 #visualization {
 	position : absolute;
-	background : url('chrome_visualization_window.png');
+	background : url('../img/chrome_visualization_window.png');
 	width : 409px;
 	height : 413px;
 	padding-left : 11px;
@@ -54,7 +60,7 @@ a {
 
 #player {
 	position : relative;
-	background : url('chrome_player_window.png');
+	background : url('../img/chrome_player_window.png');
 	width : 274px;
 	height : 77px;
 	left : 420px;
@@ -69,7 +75,7 @@ a {
 #buttons li {
 	height : 18px;
 	width : 23px;
-	background : url('chrome_buttons.png') no-repeat;
+	background : url('../img/chrome_buttons.png') no-repeat;
 	overflow:hidden;
 	display:inline-block;
 }
@@ -107,7 +113,7 @@ a {
 
 #playlist-container {
 	position : relative;
-	background : url('chrome_playlist_window.png');
+	background : url('../img/chrome_playlist_window.png');
 	width : 274px;
 	height : 106px;
 	left : 420px;
@@ -115,7 +121,7 @@ a {
 
 #vislist-container {
 	position : relative;
-	background : url('chrome_visualization_list_window.png');
+	background : url('../img/chrome_visualization_list_window.png');
 	width : 274px;
 	height : 106px;
 	left : 420px;
@@ -135,16 +141,17 @@ a {
 
 
 #playlist {
-	color:#00E200;
-	display:inline;
-	font-family:arial;
-	font-size:10px;
-	left:12px;
-	height: 100px;
-	overflow : auto;
-	letter-spacing:1px;
-	position:absolute;
-	top:23px;
+	color: #00E200;
+	display: inline;
+	font-family: arial;
+	font-size: 10px;
+	/* left: 12px; */
+	height: 300px;
+	overflow: visible;
+	line-height: 12px;
+	letter-spacing: 1px;
+	position: absolute;
+	/* top: 23px; */
 }
 
 #playlist li, #vislist li {
@@ -194,10 +201,10 @@ a {
 }
 
 .jScrollPaneDrag {
-	background: url('chrome_scroll_handle.png') no-repeat scroll;
+	background: url('../img/chrome_scroll_handle.png') no-repeat scroll;
 }
 .jScrollPaneDragBottom {
-	background: url('chrome_scroll_handle.png') 0 -10px no-repeat scroll;
+	background: url('../img/chrome_scroll_handle.png') 0 -10px no-repeat scroll;
 	height:8px;
 }
 

@@ -31,10 +31,10 @@ var visualizations = [
 	"Unchained - God of the Game",
 	// "Unchained - God Of The Game (Remix)",
 	// "Unchained - Cranked On Failure",
-	"Rovastar & Zylot - Narell's Fever",
-	"fiShbRaiN - betelguese",
-	"Rovastar - Starquake",
-	"fiShbRaiN - inside the flux capacitor",
+	// "Rovastar & Zylot - Narell's Fever",
+	// "fiShbRaiN - betelguese",
+	// "Rovastar - Starquake",
+	// "fiShbRaiN - inside the flux capacitor",
 	"Krash - Hyperspace",
 	"John Scoville - Inside Outside",
 	"John Scoville - Retina (Beat Mix)",
@@ -46,7 +46,7 @@ var visualizations = [
 	"Zylot - Psyonist (New Eyes Mix)",
 	//"Unchained - Picture Of Poison",
 	"Unchained - Painful Plasma",
-	"Unchained - Jaundice",
+	// "Unchained - Jaundice",
 	"Unchained - Morat's Final Voyage",
 	"Unchained - Unified Drag 2",
 	"Unchained - Unclaimed Wreckage 2 (Shamanic)",
@@ -64,10 +64,10 @@ var visualizations = [
 ];
 var songs = [
 	["nowornever.mp3", "Johan Vilborg & Tritonal feat. Phoebe Ryan - Now or Never A Mai Tai "],
-	["firstofmay.mp3", "Jonathan Coulton - First of May"],
-	["mrfancypants.mp3", "Jonathan Coulton - Mr. Fancy Pants"],
-	["tomcruisecrazy.mp3", "Jonathan Coulton - Tom Cruise Crazy"],
-	["mandelbrotset.mp3", "Jonathan Coulton - Mandelbrot Set"]
+	// ["firstofmay.mp3", "Jonathan Coulton - First of May"],
+	// ["mrfancypants.mp3", "Jonathan Coulton - Mr. Fancy Pants"],
+	// ["tomcruisecrazy.mp3", "Jonathan Coulton - Tom Cruise Crazy"],
+	// ["mandelbrotset.mp3", "Jonathan Coulton - Mandelbrot Set"]
 
 /*
 	["wanderingstar.mp3", "Portishead - Wandering Star"],
@@ -267,7 +267,7 @@ function initJuicyAmp() {
 		if (activeVisItem)
 			activeVisItem.className = "";
 		activeVisItem = item;
-		JD.loadMilkDrop("presets_old/" + item._value);
+		JD.loadMilkDrop("presets/" + item._value);
 		item.className = "active";
 	}
 
