@@ -222,7 +222,7 @@ function initJuicyAmp() {
 				var music = soundManager.createSound(
 					{
 						id:item._value,
-						url:"music/" + item._value,
+						url:"./music/" + item._value,
 						autoLoad : true,
 						stream : true,
 						useWaveformData: true,
@@ -267,7 +267,7 @@ function initJuicyAmp() {
 		if (activeVisItem)
 			activeVisItem.className = "";
 		activeVisItem = item;
-		JD.loadMilkDrop("presets/" + item._value);
+		JD.loadMilkDrop("./presets/" + item._value);
 		item.className = "active";
 	}
 
