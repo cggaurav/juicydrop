@@ -26,37 +26,37 @@ var $ = function(id) {return document.getElementById(id);};
 
 
 var visualizations = [
-	//"fiShbRaiN - narcolepsy",
+	// "fiShbRaiN - narcolepsy",
+	"Geiss - Oldskool",
+	"Geiss - Eggs",
+	"Geiss - De La Moutard 1",
 	"Zylot - Spiral (Hypnotic)",
+	"Zylot - Psyonist (New Eyes Mix)",
 	"Unchained - God of the Game",
 	// "Unchained - God Of The Game (Remix)",
 	// "Unchained - Cranked On Failure",
-	// "Rovastar & Zylot - Narell's Fever",
-	// "fiShbRaiN - betelguese",
-	// "Rovastar - Starquake",
-	// "fiShbRaiN - inside the flux capacitor",
+	"Rovastar & Zylot - Narell's Fever",
+	"fiShbRaiN - betelguese",
+	"Rovastar - Starquake",
+	"fiShbRaiN - inside the flux capacitor",
 	"Krash - Hyperspace",
 	"John Scoville - Inside Outside",
 	"John Scoville - Retina (Beat Mix)",
 	"John Scoville - Matrix Nautilus",
 	"Illusion - Growing Diamond",
-	//"CTho - Vibes",
-	"Geiss - Oldskool",
-	"Geiss - Eggs",
-	"Zylot - Psyonist (New Eyes Mix)",
-	//"Unchained - Picture Of Poison",
+	"CTho - Vibes",
+	"Unchained - Picture Of Poison",
 	"Unchained - Painful Plasma",
-	// "Unchained - Jaundice",
+	"Unchained - Jaundice",
 	"Unchained - Morat's Final Voyage",
 	"Unchained - Unified Drag 2",
 	"Unchained - Unclaimed Wreckage 2 (Shamanic)",
 	"Unchained & Rovastar - Xen Traffic",
-	//"Zylot - light of the path",
+	// "Zylot - light of the path",
 	"Unchained - Making a Science of It 4",
 	"Unchained - Goofy Beat Detection",
 	"Telek EMPR - Scanner - Trust me, I've got a Melways",
 	"Rovastar - Explosive Minds",
-	"Geiss - De La Moutard 1",
 	"Unchained - Ribald Ballad",
 	"Unchained - Goo Kung Fu",
 	"Aderrasi - Pyrokinesis",
@@ -64,7 +64,7 @@ var visualizations = [
 ];
 var songs = [
 	["nowornever.mp3", "Johan Vilborg & Tritonal feat. Phoebe Ryan - Now or Never A Mai Tai "],
-	// ["firstofmay.mp3", "Jonathan Coulton - First of May"],
+	["firstofmay.mp3", "Jonathan Coulton - First of May"],
 	// ["mrfancypants.mp3", "Jonathan Coulton - Mr. Fancy Pants"],
 	// ["tomcruisecrazy.mp3", "Jonathan Coulton - Tom Cruise Crazy"],
 	// ["mandelbrotset.mp3", "Jonathan Coulton - Mandelbrot Set"]
@@ -125,7 +125,7 @@ function initJuicyAmp() {
 	}
 
 	document.onkeydown = function(e) {
-		//console.log(e.keyCode);
+		// console.log(e.keyCode);
 		switch(e.keyCode) {
 			case 76: // L
 				JD.reload();
@@ -134,6 +134,7 @@ function initJuicyAmp() {
 				JD.toggleDebug(); // D
 				break;
 			case 88:
+				// x
 				JD.setDimensions(screenWidth,screenHeight);
 				$("screen").style.paddingLeft = "0px";
 				$("screen").style.width = "400px";
@@ -141,6 +142,7 @@ function initJuicyAmp() {
 				$("screen").style.height = "400px";
 				break;
 			case 90:
+				// z
 				JD.setDimensions(256,256);
 				$("screen").style.paddingLeft = "72px";
 				$("screen").style.width = "328px";
@@ -148,10 +150,12 @@ function initJuicyAmp() {
 				$("screen").style.height = "328px";
 				break;
 			case 49: 
+				// 1
 				var enabled = JD.getRenderSettings().drawWaveform = !JD.getRenderSettings().drawWaveform;
 				setInfoText("Waveform: " + (enabled ? "on" : "off"));
 				break;
 			case 50: 
+				// 2
 				var enabled = JD.getRenderSettings().drawCustomWaves = !JD.getRenderSettings().drawCustomWaves;
 				setInfoText("Custom waves: " + (enabled ? "on" : "off"));
 				break;
@@ -172,6 +176,7 @@ function initJuicyAmp() {
 				setInfoText("Motion vectors: " + (enabled ? "on" : "off"));
 				break;
 			case 55: 
+				// 7
 				var enabled = JD.getRenderSettings().drawVideoEcho = !JD.getRenderSettings().drawVideoEcho;
 				setInfoText("Video echo: " + (enabled ? "on" : "off"));
 				break;
@@ -202,8 +207,6 @@ function initJuicyAmp() {
 		if (smsongs[item._value]) {
 			smsongs[item._value].play();
 		} else {
-			// load song
-			// console.log(item._value)
 			if(item._value.indexOf('api.soundcloud.com') != -1)
 			{
 				// console.log('http', item)
@@ -233,7 +236,6 @@ function initJuicyAmp() {
 			}
 		}
 		activeMusic = smsongs[item._value];
-		// console.log('activemusic', activeMusic)
 		JD.setAudioInput(activeMusic);
 
 		if (!JD.isRunning())
@@ -250,7 +252,6 @@ function initJuicyAmp() {
 	for (var i=0;i<songs.length;i++) {
 		(function() {
 			var file = songs[i][0];
-			// var label = i+1 + ". " + songs[i][1];
 			var label = songs[i][1];
 			var songItem = addListItem(
 				document.getElementById("playlist"),
@@ -360,8 +361,6 @@ function initJuicyAmp() {
 					var title = song.title;
 					var url = song.stream_url + ((song.stream_url.indexOf("?") == -1) ? "?" : "&") + "client_id=" + client_id;
 					var trackId = "track_" + song.id;
-					// var file = songs[i][0];
-					// var label = i+1 + ". " + songs[i][1];
 					addListItem(
 						document.getElementById("playlist"),
 						title, url, selectSong
@@ -381,12 +380,13 @@ function initJuicyAmp() {
 		if (!activeMusic) return;
 		var juice = activeMusic.juice;
 		if (!juice) return;
-
+		// console.log('juice:spectrum', juice.freqBands16)
 		for (var i=0;i<16;i++) {
 			var h = juice.freqBands16[i];
-			h = Math.pow(h,0.75)*8;
+			h = Math.pow(h,0.1)*4;
 			if (h > 16) h = 16;
 			h = h>>0;
+			// console.log(h, 'h')
 			if (h > 0) {
 				specCtx.drawImage(
 					specBar,

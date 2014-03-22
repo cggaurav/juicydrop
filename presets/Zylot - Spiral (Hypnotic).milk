@@ -154,7 +154,7 @@ shape_0_per_frame2=rad = rad+.3*bass;
 shape_0_per_frame3=r = if(above(bass,1.5),1,0);
 shape_0_per_frame4=g = if(above(bass,1.5),1,0);
 shape_0_per_frame5=b = if(above(bass,1.5),1,0);
-shapecode_1_enabled=1
+shapecode_1_enabled=0
 shapecode_1_sides=8
 shapecode_1_additive=0
 shapecode_1_thickOutline=0

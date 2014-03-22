@@ -1823,7 +1823,7 @@ var JuicyDrop = function(screenCtr, width, height, audioInput) {
 			url, 
 			function(http) {
 				preset = parseMilk(http.responseText);
-				console.log('preset', preset)
+				console.log('preset', preset, url)
 				isMilkDrop = true;
 				presetUrl = url;
 				if (callback)
@@ -1932,15 +1932,16 @@ var JuicyDrop = function(screenCtr, width, height, audioInput) {
 JuicyDrop.prepareSM2 = function(soundManager) {
 	soundManager.flashVersion = 9;
 	soundManager.preferFlash = true;
-	soundManager.allowScriptAccess = 'always';
+	// soundManager.allowScriptAccess = 'always';
 	soundManager.flash9Options.useEQData = true;
+	// soundManager.flash9Options.usePeakData = true;
 	soundManager.flash9Options.useWaveformData = true;
 	soundManager.useHighPerformance = true;
-	soundManager.allowPolling = false;
+	soundManager.allowPolling = true;
 	soundManager.defaultOptions.whileplaying = analyzeSound;
-	soundManager.useHTML5Audio = true,
-	soundManager.waitForWindowLoad = false,
-	soundManager.wmode = null
+	soundManager.useHTML5Audio = true;
+	soundManager.waitForWindowLoad = false;
+	soundManager.wmode = null;
 }
 
 return JuicyDrop;
