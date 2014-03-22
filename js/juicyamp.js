@@ -26,12 +26,12 @@ var $ = function(id) {return document.getElementById(id);};
 
 
 var visualizations = [
+	"Zylot - Spiral (Hypnotic)",
+	"Zylot - Psyonist (New Eyes Mix)",
 	// "fiShbRaiN - narcolepsy",
 	"Geiss - Oldskool",
 	"Geiss - Eggs",
 	"Geiss - De La Moutard 1",
-	"Zylot - Spiral (Hypnotic)",
-	"Zylot - Psyonist (New Eyes Mix)",
 	"Unchained - God of the Game",
 	// "Unchained - God Of The Game (Remix)",
 	// "Unchained - Cranked On Failure",
@@ -44,13 +44,13 @@ var visualizations = [
 	"John Scoville - Retina (Beat Mix)",
 	"John Scoville - Matrix Nautilus",
 	"Illusion - Growing Diamond",
-	"CTho - Vibes",
-	"Unchained - Picture Of Poison",
+	// "CTho - Vibes",
+	// "Unchained - Picture Of Poison",
 	"Unchained - Painful Plasma",
 	"Unchained - Jaundice",
 	"Unchained - Morat's Final Voyage",
 	"Unchained - Unified Drag 2",
-	"Unchained - Unclaimed Wreckage 2 (Shamanic)",
+	// "Unchained - Unclaimed Wreckage 2 (Shamanic)",
 	"Unchained & Rovastar - Xen Traffic",
 	// "Zylot - light of the path",
 	"Unchained - Making a Science of It 4",
@@ -64,7 +64,7 @@ var visualizations = [
 ];
 var songs = [
 	["nowornever.mp3", "Johan Vilborg & Tritonal feat. Phoebe Ryan - Now or Never A Mai Tai "],
-	["firstofmay.mp3", "Jonathan Coulton - First of May"],
+	// ["firstofmay.mp3", "Jonathan Coulton - First of May"],
 	// ["mrfancypants.mp3", "Jonathan Coulton - Mr. Fancy Pants"],
 	// ["tomcruisecrazy.mp3", "Jonathan Coulton - Tom Cruise Crazy"],
 	// ["mandelbrotset.mp3", "Jonathan Coulton - Mandelbrot Set"]
@@ -270,6 +270,7 @@ function initJuicyAmp() {
 		activeVisItem = item;
 		JD.loadMilkDrop("./presets/" + item._value);
 		item.className = "active";
+
 	}
 
 	for (var i=0;i<visualizations.length;i++) {
@@ -282,7 +283,9 @@ function initJuicyAmp() {
 			));
 		})();
 	}
+	JD.stop();
 	selectVis(visItems[0]);
+	JD.start();
 
 	var buttonPrev = document.getElementById("button-prev")
 	var buttonPlay = document.getElementById("button-play")

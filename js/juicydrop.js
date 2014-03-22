@@ -87,7 +87,10 @@ function drawWave(soundData, ctx, settings, frameData, screenWidth, screenHeight
 	if (settings.color[3] < 0.001)
 		return;
 
-	// console.log(soundData, 'SOUNDDATA')
+	if (!soundData.waveDataL.left && !soundData.waveDataL.right)
+		return;
+
+	// console.log(soundData, 'soundData')
 	var waveDataL = soundData.waveDataL.left.slice(0);
 	var waveDataR = soundData.waveDataR.right.slice(0);
 
@@ -136,7 +139,7 @@ function drawWave(soundData, ctx, settings, frameData, screenWidth, screenHeight
 		b *= scale;
 	}
 
-	var waveSamples = 256 - 16;
+	var waveSamples = 512 - 16;
 	var waveMode = settings.waveMode;
 	var waveParam = settings.waveParam;
 	var numVerts = waveSamples;
@@ -1853,9 +1856,9 @@ var JuicyDrop = function(screenCtr, width, height, audioInput) {
 	var frameHist = [];
 
 	function renderCycle() {
-		if (preset && music.juice.waveDataL && music.juice.frameCount != lastFrameCount) {
+		if (preset && music && music.juice.waveDataL && music.juice.frameCount != lastFrameCount) {
 			var time = new Date().getTime();
-
+			// console.log('render', music.juice)
 			render(
 				ctx, copyCtx, pixelCtx, overlayCtx, renderSettings,
 				preset, music.juice, fps||1
@@ -1934,7 +1937,7 @@ JuicyDrop.prepareSM2 = function(soundManager) {
 	soundManager.preferFlash = true;
 	// soundManager.allowScriptAccess = 'always';
 	soundManager.flash9Options.useEQData = true;
-	// soundManager.flash9Options.usePeakData = true;
+	soundManager.flash9Options.usePeakData = true;
 	soundManager.flash9Options.useWaveformData = true;
 	soundManager.useHighPerformance = true;
 	soundManager.allowPolling = true;
